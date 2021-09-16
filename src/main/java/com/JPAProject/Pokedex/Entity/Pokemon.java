@@ -39,9 +39,9 @@ public class Pokemon {
     @Column(name = "speed")
     private Integer speed;
     @Column(name = "front_sprite")
-    private Integer front_sprite;
+    private String front_sprite;
     @Column(name = "back_sprite")
-    private Integer back_sprite;
+    private String back_sprite;
     @Column(name = "type")
     private String type;
 
