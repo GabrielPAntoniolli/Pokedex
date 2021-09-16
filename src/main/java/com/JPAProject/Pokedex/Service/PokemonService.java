@@ -21,24 +21,22 @@ public class PokemonService {
 
     public Page<Pokemon> getAllPokemon(Pageable pageable, HttpStatus ok) {
 
+
         return pokemonRepository.findAll(pageable);
     }
 
-    /*public Pokemon getPokemonById(Integer id) {
 
-        return pokemonRepository.findById(id).orElseThrow(RuntimeException::new);
-    }*/
     private PokemonDTO convertToDto(Pokemon pokemon) {
         PokemonDTO pokeDTO = modelMapper.map(pokemon, PokemonDTO.class);
 
         return pokeDTO;
     }
+
     public PokemonDTO getPokemonById(Integer id) {
 
-        PokemonDTO poke = convertToDto(pokemonRepository.findById(id).orElseThrow(RuntimeException::new));
-        return poke;
+        PokemonDTO pokemon = convertToDto(pokemonRepository.findById(id).orElseThrow(RuntimeException::new));
+        return pokemon;
     }
-
 
     public String getNameById(Integer id){
 

@@ -33,19 +33,12 @@ public class PokemonController {
     }*/
 
     @GetMapping// Same as RequestMapping(method = method.GET)
-    //PageableDefault really good manner of set the default for pagination.
+                //PageableDefault really good manner of set the default for pagination.
     public Page<Pokemon> listAllPokemonPageable(@PageableDefault(sort = "id", direction = Sort.Direction.ASC,
-            value = 10) Pageable pageable) {
+            size = 7) Pageable pageable) {
 
         return pokemonService.getAllPokemon((pageable), HttpStatus.OK);
     }
-
-    /*@GetMapping("/{id}")
-    @ResponseBody
-    public Pokemon getPokemonById(@PathVariable("id") Integer id) {
-
-        return pokemonService.getPokemonById(id);
-    }*/
 
     @GetMapping("/{id}")
     @ResponseBody

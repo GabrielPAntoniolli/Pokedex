@@ -1,6 +1,7 @@
 package com.JPAProject.Pokedex.Dao;
 
 
+import com.JPAProject.Pokedex.DTO.PokemonDTO;
 import com.JPAProject.Pokedex.Entity.Pokemon;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
