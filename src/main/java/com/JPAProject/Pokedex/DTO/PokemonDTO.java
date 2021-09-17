@@ -1,19 +1,22 @@
 package com.JPAProject.Pokedex.DTO;
 
 
+import com.JPAProject.Pokedex.Entity.Pokemon;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Getter
 @Setter
+@Getter
 @ToString
+@NoArgsConstructor
 public class PokemonDTO {
-
 
     private Integer id;
     private String name;
@@ -30,7 +33,5 @@ public class PokemonDTO {
     private String type;
     private List<String> move;
     private List<EvolutionDTO> evolve_to;
-
-
 
 }

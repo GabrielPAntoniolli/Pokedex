@@ -3,14 +3,19 @@ package com.JPAProject.Pokedex.Controller;
 import com.JPAProject.Pokedex.DTO.PokemonDTO;
 import com.JPAProject.Pokedex.Entity.Pokemon;
 import com.JPAProject.Pokedex.Service.PokemonService;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -20,40 +25,33 @@ public class PokemonController {
     @Autowired
     private PokemonService pokemonService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    /*@RequestMapping(method = RequestMethod.GET,
+                    value = "/pagination")
+    public Page<PokemonDTO> getAllPokemon(@PageableDefault(sort = "id", direction = Sort.Direction.ASC, size = 5) Pageable pageable) {
 
-  /*  @Autowired
-    private PokemonService pokemonService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Pokemon> getAllPokemon() {
-
-        return pokemonService.getAllPokemon();
+        return pokemonService.getAllPokemon(pageable);
     }*/
 
-    @GetMapping// Same as RequestMapping(method = method.GET)
-                //PageableDefault really good manner of set the default for pagination.
-    public Page<Pokemon> listAllPokemonPageable(@PageableDefault(sort = "id", direction = Sort.Direction.ASC,
-            size = 7) Pageable pageable) {
+    @GetMapping
+    public List<Pokemon> findAll(){
 
-        return pokemonService.getAllPokemon((pageable), HttpStatus.OK);
+        return pokemonService.findAll();
     }
 
-    @GetMapping("/{id}")
+   /* @GetMapping("/{id}")
     @ResponseBody
     public PokemonDTO getPokemonById(@PathVariable("id") Integer id) {
 
         return pokemonService.getPokemonById(id);
     }
 
-
-    @GetMapping("/{id}/name")
+*/
+  /*  @GetMapping("/{id}/name")
     @ResponseBody
     public String getPokemonName(@PathVariable("id") Integer id){
 
         return pokemonService.getNameById(id);
     }
 
-
+*/
 }

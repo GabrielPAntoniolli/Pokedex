@@ -1,11 +1,13 @@
 package com.JPAProject.Pokedex.Entity;
 
+import com.JPAProject.Pokedex.DTO.PokemonDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -53,7 +55,7 @@ public class Pokemon {
             name = "move",
             joinColumns = @JoinColumn(name = "pokemon_id"))
 
-    Set<String> move;
+    List<String> move;
 
     @ManyToMany
     @JoinTable(
@@ -61,5 +63,5 @@ public class Pokemon {
             joinColumns = @JoinColumn(name="pokemon_id"),
     inverseJoinColumns = @JoinColumn(name = "evolve_to"))
 
-    private Set<Pokemon> evolve_to;
+    private List<Pokemon> evolve_to;
 }
