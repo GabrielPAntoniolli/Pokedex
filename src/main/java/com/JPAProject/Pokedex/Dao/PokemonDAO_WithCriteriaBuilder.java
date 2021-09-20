@@ -2,8 +2,8 @@ package com.JPAProject.Pokedex.Dao;
 
 
 import com.JPAProject.Pokedex.Entity.Pokemon;
+import com.JPAProject.Pokedex.Entity.Pokemon_;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -30,6 +30,16 @@ public class PokemonDAO_WithCriteriaBuilder {
         List<Pokemon> allPokemon = typedQuery.getResultList();
 
         return allPokemon;
+    }
+
+    public Pokemon findById(Integer id){
+
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Pokemon> criteriaQuery = cb.createQuery(Pokemon.class);
+        Root<Pokemon> pokeRoot = criteriaQuery.from(Pokemon.class);
+        criteriaQuery.select(pokeRoot).where(cb.equal(pokeRoot.get(Pokemon_.id), id));
+        return entityManager.createQuery(criteriaQuery).getSingleResult();
+
     }
 
 }

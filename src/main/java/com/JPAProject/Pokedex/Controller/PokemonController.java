@@ -33,19 +33,19 @@ public class PokemonController {
     }*/
 
     @GetMapping
-    public List<Pokemon> findAll(){
+    public List<PokemonDTO> findAll(){
 
         return pokemonService.findAll();
     }
 
-   /* @GetMapping("/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     public PokemonDTO getPokemonById(@PathVariable("id") Integer id) {
 
         return pokemonService.getPokemonById(id);
     }
 
-*/
+
   /*  @GetMapping("/{id}/name")
     @ResponseBody
     public String getPokemonName(@PathVariable("id") Integer id){

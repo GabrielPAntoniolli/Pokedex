@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PokemonService {
@@ -30,9 +31,12 @@ public class PokemonService {
         return dtoPage;
     }*/
 
-    public List<Pokemon> findAll(){
+    public List<PokemonDTO> findAll(){
 
-        return pokeDAO.findAll();
+        List<PokemonDTO> pokeDTO = pokeDAO.findAll()
+                                         .stream()
+                                         .map(pokemon -> modelMapper.map(pokemon,PokemonDTO  .class)).collect(Collectors.toList());
+        return pokeDTO;
     }
 
     private PokemonDTO convertToDto(Pokemon pokemon) {
@@ -41,11 +45,12 @@ public class PokemonService {
         return pokeDTO;
     }
 
-    /*public PokemonDTO getPokemonById(Integer id) {
+    public PokemonDTO getPokemonById(Integer id) {
 
-        PokemonDTO pokemon = convertToDto(pokemonRepository.findById(id).orElseThrow(RuntimeException::new));
+        PokemonDTO pokemon = convertToDto(pokeDAO.findById(id));
         return pokemon;
-    }*/
+
+    }
 
    /* public String getNameById(Integer id){
 
