@@ -23,21 +23,13 @@ public class PokemonController {
     @Autowired
     private ModelMapper modelMapper;
 
-  /*  @Autowired
-    private PokemonService pokemonService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Pokemon> getAllPokemon() {
+    @GetMapping
 
-        return pokemonService.getAllPokemon();
-    }*/
-
-    @GetMapping// Same as RequestMapping(method = method.GET)
-                //PageableDefault really good manner of set the default for pagination.
-    public Page<Pokemon> listAllPokemonPageable(@PageableDefault(sort = "id", direction = Sort.Direction.ASC,
+    public Page<PokemonDTO> listAllPokemonPageable(@PageableDefault(sort = "id", direction = Sort.Direction.ASC,
             size = 7) Pageable pageable) {
 
-        return pokemonService.getAllPokemon((pageable), HttpStatus.OK);
+        return pokemonService.getAllPokemon(pageable);
     }
 
     @GetMapping("/{id}")

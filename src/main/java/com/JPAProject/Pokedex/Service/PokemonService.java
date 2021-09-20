@@ -19,10 +19,10 @@ public class PokemonService {
     @Autowired
     PokemonRepository pokemonRepository;
 
-    public Page<Pokemon> getAllPokemon(Pageable pageable, HttpStatus ok) {
+    public Page<PokemonDTO> getAllPokemon(Pageable pageable) {
+    Page<PokemonDTO> pokeDTO = pokemonRepository.findAll(pageable).map(pokemon -> modelMapper.map(pokemon,PokemonDTO.class));
 
-
-        return pokemonRepository.findAll(pageable);
+        return pokeDTO;
     }
 
 
