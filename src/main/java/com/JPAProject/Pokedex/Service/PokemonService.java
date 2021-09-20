@@ -43,6 +43,13 @@ public class PokemonService {
         return pokemonRepository.findNameById(id);
     }
 
+    public PokemonDTO getPokemonByName(String name){
+
+        PokemonDTO pokeDTO = convertToDto(pokemonRepository.findByName(name).orElseThrow(RuntimeException::new));
+
+        return pokeDTO;
+    }
+
 
 }
 

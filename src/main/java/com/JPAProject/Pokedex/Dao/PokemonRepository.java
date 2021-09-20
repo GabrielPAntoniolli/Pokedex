@@ -16,9 +16,11 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Integer> {
     Optional<Pokemon> findById(Integer id);
     Page<Pokemon> findAll(Pageable pageable);
 
-
     @Query("select name from Pokemon where id = ?1")
     String findNameById(Integer id);
+
+
+    Optional<Pokemon> findByName(String name);
 
 
 }
