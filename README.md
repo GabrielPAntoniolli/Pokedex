@@ -63,8 +63,10 @@ Aiming the most secure architecture, before sending the data to Controller class
   ### 9. ***Using Pagination***
   So with all errors solved, the last thing is paginate the API, but as soon as I started I realized that wouldn't be that easy, because to use the pagination given by the JPARepository it return a Page<Pokemon> object, so I couldn't just use the DTOs I had and therefore the loop problem would go back. So I used the ModelMapper library that maps an object to another type, and did this to every sing Pokemon using this command:
 
-![image](https://user-images.githubusercontent.com/72032836/133979702-91e2198f-7ca7-4f17-b487-2acefbf8f31e.png)
-
+![image](https://user-images.githubusercontent.com/72032836/133984494-64c073b7-650f-4084-8951-769a4f2f1cb7.png)
+  
+  ### 10. ***Accessing data with CriteriaBuilder***
+Sometimes some data request can be more specific, therefore another way of doing that other than using JPARepository is using CriteriaBuilder API, a very good library to make consults to databases, I made another branch so I could practice doing the same requests but using criteriaBuilder.
 
    
 
@@ -74,4 +76,6 @@ Aiming the most secure architecture, before sending the data to Controller class
 
 ## Endpoints
 * /pokedex/{id} -> Returns PokeData, containing id, name, weight, height, stats, evolutions and types. 
-* /pokedex/? -> Returns a pagination of Pokemon, 
+* /pokedex/ -> Returns all pokemons in paginated, by default 7 per page.
+* /pokedex/byName/{name} -> Returns pokedata searching by the name
+* /pokedex/{id}/name -> Returns the name of selected pokemon only.
