@@ -5,6 +5,8 @@ It is a Pokémon Encyclopedia,  designed to catalogue and provide information re
 
 *This projects mimics a PokeDex backed by https://pokeapi.co/ data.*
 
+A video with the Full Explanation can be watched here: (https://www.youtube.com/watch?v=Ra5FPtIB4A0&ab_channel=GabrielPereiraAntoniolli)
+
 ## ***Technologies used:***
 * SpringBoot Web
 * Lombok
